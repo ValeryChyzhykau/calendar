@@ -10,10 +10,10 @@ import { CheckAuthGuard } from './core/guards/check-auth.guard';
 const routes: Routes = [
   { path: '' , redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
-  { path: 'login', component: LoginComponent, canActivate: [CheckAuthGuard] },
+  { path: 'login', component: LoginComponent , canActivate: [CheckAuthGuard] },
   { path: '**', component: NotFoundComponent }
 ];
-
+//
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]

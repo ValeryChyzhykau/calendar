@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { Router } from '@angular/router';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFireDatabase } from 'angularfire2/database';
 import * as firebase from 'firebase/app';
@@ -12,14 +11,13 @@ export class AuthService {
   private authState: any;
   constructor(
     private afAuth: AngularFireAuth,
-    private db: AngularFireDatabase,
-    private router: Router
+    private db: AngularFireDatabase
   ) {
     this.user = afAuth.authState;
   }
 
   authUser() {
-    return this.user;
+    return  this.user;
   }
 
   get currentUserId(): string {
@@ -33,13 +31,10 @@ export class AuthService {
       password
     );
     this.authState = user;
-    this.setUserStatus('online');
   }
 
   logout() {
     this.afAuth.auth.signOut();
-    this.setUserStatus('offLine');
-    this.router.navigate(['./login']);
   }
 
   async signUp(
@@ -82,27 +77,18 @@ export class AuthService {
     console.log(path);
     this.db
       .object(path)
-      .set(data)
+      .update(data)
       .catch(error => console.log(error));
     console.log(this.db);
   }
 
-  setUserStatus(status: string): void {
-    const path = `users/${this.currentUserId}`;
-    const data = {
-      status
-    };
-    this.db
-      .object(path)
-      .update(data)
-      .catch(error => console.log(error));
-  }
 
   checkStatus() {
-    console.log(this.afAuth.authState);
     return this.afAuth.authState.pipe(
       map(data => {
         if (data !== undefined && data !== null) {
+          this.authState = data.uid;
+          console.log(this.authState);
           return true;
         } else {
           return false;
