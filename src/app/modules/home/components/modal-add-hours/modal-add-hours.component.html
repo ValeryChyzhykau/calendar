@@ -1,0 +1,18 @@
+<form novalidate [formGroup]="myForm" (ngSubmit)='submit()'>
+    <mat-form-field class="example-full-width">        
+        <input type="number" matInput placeholder=" Введите количество часов" formControlName='number' name='number'>
+        
+        <div *ngIf="myForm.controls['number'].invalid && myForm.controls['number'].touched" class='invalid-number'>
+            Введите числовой номер oт 0 до 24
+        </div>
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+        
+        <input type="text"  matInput placeholder="Введите дату в формате YYYY-MM-DD (например: 2020-01-24)" formControlName='date' name='date'>
+        
+        <div *ngIf="myForm.controls['date'].invalid && myForm.controls['date'].touched" class='invalid-number'>
+            Введите дату
+        </div>
+    </mat-form-field>
+    <button mat-stroked-button color="primary" [disabled]="myForm.invalid" type='submit'>Primary</button>
+</form>

@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {MatDialog} from '@angular/material/dialog';
 import { ModalComponent } from '../modal/modal.component';
 
@@ -12,7 +12,7 @@ export class RegistrationComponent implements OnInit {
 
   constructor(public dialog: MatDialog) { }
   openDialog(): void {
-    const dialogRef = this.dialog.open(ModalComponent, {
+     this.dialog.open(ModalComponent, {
       width: '350px',
       height: '500px'
     });

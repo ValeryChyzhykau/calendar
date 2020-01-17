@@ -4,22 +4,23 @@ import { AngularFireDatabase } from 'angularfire2/database';
 import * as firebase from 'firebase/app';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { UserId } from '../models/user.interface';
+
+
 
 @Injectable()
 export class AuthService {
   private user: Observable<firebase.User>;
-  private authState: any;
+  private authState: UserId;
   constructor(
     private afAuth: AngularFireAuth,
     private db: AngularFireDatabase
   ) {
     this.user = afAuth.authState;
   }
-
   authUser() {
-    return  this.user;
+    return this.user;
   }
-
   get currentUserId(): string {
     console.log(this.authState);
     return this.authState !== null ? this.authState.user.uid : '';
@@ -51,8 +52,7 @@ export class AuthService {
       );
       this.authState = user;
       console.log(this.authState);
-      const status = 'online';
-      this.setUserData(email, userName, login, status, phone);
+      this.setUserData(email, userName, login, phone);
     } catch (error) {
       return console.log(error);
     }
@@ -62,7 +62,6 @@ export class AuthService {
     email: string,
     userName: string,
     login: string,
-    status: string,
     phone: number
   ): void {
     const path = `users/${this.currentUserId}`;
@@ -70,8 +69,7 @@ export class AuthService {
       email,
       userName,
       login,
-      phone,
-      status
+      phone
     };
     console.log(data);
     console.log(path);
@@ -87,8 +85,6 @@ export class AuthService {
     return this.afAuth.authState.pipe(
       map(data => {
         if (data !== undefined && data !== null) {
-          this.authState = data.uid;
-          console.log(this.authState);
           return true;
         } else {
           return false;

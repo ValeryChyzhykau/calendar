@@ -1,4 +1,13 @@
 <app-header></app-header>
-<p>lalalal</p>
+<br>
+<button mat-raised-button (click)="openDialog()">Добавить...</button>
+<full-calendar 
+  *ngIf='calendarEvents' 
+   deepChangeDetection="true" 
+   [events]="calendarEvents" 
+   [plugins]='calendarPlugins'
+   deepChangeDetection="true"
+   >
+  </full-calendar>
+
 <app-footer></app-footer>
-<button (click)='logout()'>logout</button>

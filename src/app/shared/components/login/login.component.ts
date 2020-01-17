@@ -15,11 +15,11 @@ export class LoginComponent implements OnInit {
     userPassword: new FormControl('', Validators.required)
   });
   async submit() {
-   await this.service.login(
+    await this.service.login(
       this.myForm.controls.userEmail.value,
       this.myForm.controls.userPassword.value
     );
-   this.router.navigate(['/home']);
+    this.router.navigate(['/home']);
   }
   ngOnInit() {}
 }

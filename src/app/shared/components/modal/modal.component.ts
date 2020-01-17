@@ -27,11 +27,12 @@ export class ModalComponent {
     const userPhone = this.myForm.controls.userPhone.value;
     this.service.signUp(userEmail, userPassword, userName, userLogin, userPhone)
       .then(() => this.router.navigate(['/home']))
+      .then(() => this.dialogRef.close())
       .catch(error => alert( error.message));
   }
   constructor(public dialogRef: MatDialogRef<ModalComponent>, private service: AuthService, private router: Router) {}
 
-  onNoClick(): void {
+  onNoClick() {
     this.dialogRef.close();
   }
 }
