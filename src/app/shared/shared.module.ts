@@ -20,7 +20,7 @@ import { environment } from 'src/environments/environment';
     RegistrationComponent,
     ModalComponent
   ],
-  entryComponents: [ModalComponent],
+  entryComponents: [ModalComponent, NotFoundComponent],
   imports: [
     BrowserModule,
     FormsModule,
