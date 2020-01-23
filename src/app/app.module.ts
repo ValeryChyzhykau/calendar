@@ -4,12 +4,13 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeModule } from './modules/home/home.module';
-import { SharedModule } from './shared/shared.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { StoreModule } from '@ngrx/store';
 import { reducers, metaReducers } from './reducers';
 import { EffectsModule } from '@ngrx/effects';
 import { AppEffects } from './app.effects';
+import { AuthModule } from './modules/auth/auth.module';
+
 
 
 @NgModule({
@@ -18,9 +19,9 @@ import { AppEffects } from './app.effects';
   ],
   imports: [
     BrowserModule,
+    AuthModule,
     AppRoutingModule,
     HomeModule,
-    SharedModule,
     BrowserAnimationsModule,
     StoreModule.forRoot(reducers, {
       metaReducers,

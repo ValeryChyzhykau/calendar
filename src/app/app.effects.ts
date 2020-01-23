@@ -4,7 +4,7 @@ import { UserService } from './core/services/user.service';
 import { UsersActions, GetUsers, EmailUser } from './reducers/user.actions';
 import { mergeMap } from 'rxjs/operators';
 import { map } from 'rxjs/operators';
-import { AuthService } from './core/authentication/auth.service';
+import { AuthService } from './core/services/auth.service';
 
 
 @Injectable()
@@ -15,7 +15,7 @@ export class AppEffects {
     ofType(UsersActions.LoadUsers ),
     mergeMap(() =>
       this.userService
-        .getHours()
+        .get_hours()
         .valueChanges()
         .pipe(map(data => new GetUsers(data)))
     )
@@ -24,7 +24,7 @@ export class AppEffects {
   loadEmail$ = this.actions$.pipe(
     ofType(UsersActions.LoadUsers ),
     mergeMap(() =>
-      this.authService.authUser()
+      this.authService.auth_user()
         .pipe(map(data => new EmailUser(data.email)))
     )
   );

@@ -1,0 +1,22 @@
+div {
+  display: flex;
+  background-color: black;
+  justify-content: space-around;
+
+  img {
+    width: 10%;
+    height: auto;
+    background-repeat: no-repeat;
+  }
+
+  span {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+
+    p {
+      color: white;
+      font-size: 80%;
+    }
+  }
+}

@@ -1,0 +1,18 @@
+<form class="class-control" novalidate (ngSubmit)='submit()' [formGroup]="loginForm">
+    <mat-form-field>
+        <input matInput placeholder=" Email " name='email' formControlName='userEmail'>
+        <div *ngIf="loginForm.controls['userEmail'].invalid && loginForm.controls['userEmail'].touched" class='invalid-email'>
+            Не верно указан Email
+        </div>
+    </mat-form-field>
+    <mat-form-field>
+        <input matInput placeholder="Enter your password" [type]="'password'" maxlength='10'
+            formControlName='userPassword'>
+        <div *ngIf="loginForm.controls['userPassword'].invalid && loginForm.controls['userPassword'].touched"
+            class='invalid-email'>
+            Слишком короткий пароль( Минимум 6 символов )
+        </div>
+    </mat-form-field>
+    <button mat-stroked-button color="primary" [disabled]="loginForm.invalid" type='submit'>Primary</button>
+</form>
+<button mat-raised-button (click)="open_dialog()">Sign Up</button>

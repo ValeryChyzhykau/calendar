@@ -1,0 +1,36 @@
+<form novalidate [formGroup]="signUpForm" (ngSubmit)='sign_up()'>
+    <mat-form-field class="example-full-width">
+        <span matPrefix>+375 &nbsp;</span>
+        <input type="number" matInput placeholder="Telephone" formControlName='userPhone' name='phone'>
+        <div  *ngIf="signUpForm.controls['userPhone'].invalid && signUpForm.controls['userPhone'].touched" class='invalid-phone'>
+           Введите числовой номер из девяти цифр 
+        </div>
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+        <input matInput placeholder="User Name" name='name' formControlName='userName'>
+        <div  *ngIf="signUpForm.controls['userName'].invalid && signUpForm.controls['userName'].touched" class='invalid-name'>
+          Не указано имя
+        </div>
+    </mat-form-field>
+    <mat-form-field>
+        <input matInput placeholder="Enter your Login" 
+            formControlName='userLogin'>
+            <div  *ngIf="signUpForm.controls['userLogin'].invalid && signUpForm.controls['userLogin'].touched" class='invalid-password'>
+              Не указан Login
+            </div>
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+        <input matInput placeholder=" Email " name='email' formControlName='userEmail'>
+        <div  *ngIf="signUpForm.controls['userEmail'].invalid && signUpForm.controls['userEmail'].touched" class='invalid-email'>
+           Не верно указан Email
+        </div>
+    </mat-form-field>
+    <mat-form-field>
+        <input matInput placeholder="Enter your password" [type]="'password'" 
+            formControlName='userPassword'>
+            <div  *ngIf="signUpForm.controls['userPassword'].invalid && signUpForm.controls['userPassword'].touched" class='invalid-password'>
+               Слишком короткий пароль( Минимум 6 символов )
+            </div>
+    </mat-form-field>
+    <button mat-stroked-button color="primary" [disabled]="signUpForm.invalid" type='submit'>Primary</button>
+</form>

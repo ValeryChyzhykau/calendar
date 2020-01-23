@@ -1,0 +1,12 @@
+<app-header></app-header>
+<br>
+<button mat-raised-button (click)="open_dialog()">Добавить...</button>
+<full-calendar 
+   deepChangeDetection="true" 
+   [events]="calendarEvents" 
+   [plugins]='calendarPlugins'
+   deepChangeDetection="true"
+   >
+  </full-calendar>
+
+<app-footer></app-footer>
