@@ -38,8 +38,6 @@ export class ModalAddHoursComponent  {
   public submit() {
     const title = this.addHoursForm.controls.number.value;
     const date = this.addHoursForm.controls.date.value.format('YYYY-MM-DD');
-    console.log(date);
-    console.log(typeof date);
     this.user.send_hours(title, date);
     this.dialogRef.close();
   }

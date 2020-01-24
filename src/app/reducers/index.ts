@@ -6,13 +6,12 @@ import { environment } from '../../environments/environment';
 import { calendarInformation, calendarNode } from './user.reducer';
 import { informationNumber } from '../core/models/information-user.interface';
 
-// tslint:disable-next-line:no-empty-interface
 export interface State {
     [calendarNode]: informationNumber;
 }
 
 export const reducers: ActionReducerMap<State> = {
-  [calendarNode]: calendarInformation
+    [calendarNode]: calendarInformation
 };
 
 
