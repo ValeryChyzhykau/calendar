@@ -1,4 +1,4 @@
-import { informationNumber } from '../core/models/information-user.interface';
+import { informationNumber } from '@core/models/information-user.interface';
 import { UserUnion, UsersActions } from './user.actions';
 
 export interface ResponseFireBase {

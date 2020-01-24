@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import { UserService } from 'src/app/core/services/user.service';
+import { UserService } from '@core/services/user.service';
 import { MatDialog } from '@angular/material/dialog';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import interactionPlugin from '@fullcalendar/interaction';
-import { informationNumber } from 'src/app/core/models/information-user.interface';
+import { informationNumber } from '@core/models/information-user.interface';
 import { Store, select } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { selectCalendarEvents } from 'src/app/reducers/user.selectors';
-import { LoadUsers } from 'src/app/reducers/user.actions';
-import { ResponseFireBase } from 'src/app/reducers/user.reducer';
+import { selectCalendarEvents } from '@app/reducers/user.selectors';
+import { LoadUsers } from '@app/reducers/user.actions';
+import { ResponseFireBase } from '@app/reducers/user.reducer';
 import { ModalAddHoursComponent } from './components/modal-add-hours/modal-add-hours.component';
 
 @Component({

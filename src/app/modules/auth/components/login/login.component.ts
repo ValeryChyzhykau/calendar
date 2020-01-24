@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { AuthService } from '../../../../core/services/auth.service';
+import { AuthService } from '@core/services/auth.service';
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { SignUpComponent } from '../sign-up/sign-up.component';

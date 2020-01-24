@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../../../../../../core/services/auth.service';
+import { AuthService } from '@core/services/auth.service';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Store, select } from '@ngrx/store';
-import { selectEmail } from 'src/app/reducers/user.selectors';
-import { informationNumber } from '../../../../../../core/models/information-user.interface';
-import { LoadUsers } from 'src/app/reducers/user.actions';
+import { selectEmail } from '@app/reducers/user.selectors';
+import { informationNumber } from '@core/models/information-user.interface';
+import { LoadUsers } from '@app/reducers/user.actions';
 
 @Component({
   selector: 'app-header',

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
-import { UserService } from 'src/app/core/services/user.service';
+import { UserService } from '@core/services/user.service';
 import {
   MAT_MOMENT_DATE_FORMATS,
   MomentDateAdapter,
@@ -14,7 +14,6 @@ import {DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material
   templateUrl: './modal-add-hours.component.html',
   styleUrls: ['./modal-add-hours.component.scss'],
   providers: [
-    {provide: MAT_DATE_LOCALE, useValue: 'ja-JP'},
     {
       provide: DateAdapter,
       useClass: MomentDateAdapter,
@@ -25,7 +24,7 @@ import {DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material
 })
 export class ModalAddHoursComponent  {
   constructor(
-    public dialogRef: MatDialogRef<ModalAddHoursComponent>,
+    private dialogRef: MatDialogRef<ModalAddHoursComponent>,
     private user: UserService
   ) {}
   public addHoursForm: FormGroup = new FormGroup({

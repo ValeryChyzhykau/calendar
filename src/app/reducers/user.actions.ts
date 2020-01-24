@@ -1,5 +1,5 @@
 import { Action } from '@ngrx/store';
-import { informationNumber } from '../core/models/information-user.interface';
+import { informationNumber } from '@core/models/information-user.interface';
 
 export enum UsersActions {
   GetUsers = '[Users Page] GetUsers',

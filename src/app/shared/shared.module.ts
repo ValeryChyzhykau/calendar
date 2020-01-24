@@ -8,7 +8,6 @@ import { AngularFireModule } from 'angularfire2';
 import { environment } from 'src/environments/environment';
 
 
-
 @NgModule({
   declarations: [],
   imports: [

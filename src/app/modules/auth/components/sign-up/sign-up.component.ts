@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 
 import { MatDialogRef } from '@angular/material/dialog';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { AuthService } from 'src/app/core/services/auth.service';
+import { AuthService } from '@core/services/auth.service';
 import { Router } from '@angular/router';
 
 @Component({
