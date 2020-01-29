@@ -34,7 +34,7 @@ export class HomeComponent implements OnInit {
       height: '50%'
     });
   }
-  public ngOnInit() {
+   ngOnInit() {
     console.log(this.store$);
     this.store$.dispatch(new LoadUsers());
     console.log(this.calendar$);

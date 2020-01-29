@@ -1,13 +1,13 @@
 <form novalidate [formGroup]="addHoursForm" (ngSubmit)='submit()'>
         <input type="hidden" formControlName="$key">
-        <mat-form-field class="example-full-width">
+        <mat-form-field>
             <input type="number" matInput placeholder=" Введите количество часов" formControlName='title' name='number'>
             <div *ngIf="addHoursForm.controls['title'].invalid && addHoursForm.controls['title'].touched"
                 class='invalid-number'>
                 Введите числовой номер oт 0 до 24
             </div>
         </mat-form-field>
-        <mat-form-field class="example-full-width">
+        <mat-form-field >
             <input matInput [matDatepicker]="dp" placeholder="Выберете дату" name='date' formControlName='start'>
             <mat-datepicker-toggle matSuffix [for]="dp"></mat-datepicker-toggle>
             <mat-datepicker #dp></mat-datepicker>

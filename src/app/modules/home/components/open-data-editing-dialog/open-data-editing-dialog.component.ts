@@ -10,7 +10,8 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 })
 export class OpenDataEditingDialogComponent {
   constructor(
-    @Inject(MAT_DIALOG_DATA) private data: {$key: string, title: number, color: string},
+    @Inject(MAT_DIALOG_DATA)
+    private data: { $key: string; title: number; color: string },
     private userService: UserService,
     private dialogRef: MatDialogRef<OpenDataEditingDialogComponent>
   ) {}
@@ -25,11 +26,18 @@ export class OpenDataEditingDialogComponent {
     this.dialogRef.close();
   }
   public change() {
-    this.data.title = this.editHoursForm.controls.title.value;
-    this.userService.editRecord(this.data);
-    this.dialogRef.close();
+    try {
+      this.data.title = this.editHoursForm.controls.title.value;
+      this.userService.editRecord(this.data);
+      this.dialogRef.close();
+    } catch (err) {
+      (      // tslint:disable-next-line:no-unused-expression
+      err: { message: string; }) => alert(err.message);
+    }
   }
-  private hoursQuanityValidator(control: FormControl): {[key: string]: boolean } {
+  private hoursQuanityValidator(
+    control: FormControl
+  ): { [key: string]: boolean } {
     if (control.value >= 25) {
       return { number: true };
     }

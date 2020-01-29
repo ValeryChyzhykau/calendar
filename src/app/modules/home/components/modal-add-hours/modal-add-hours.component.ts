@@ -35,10 +35,15 @@ export class ModalAddHoursComponent {
     start: new FormControl('', Validators.required)
   });
   public submit() {
-    if (this.addHoursForm.valid) {
-      this.user.sendHours(this.addHoursForm.value);
+    try {
+      if (this.addHoursForm.valid) {
+        this.user.sendHours(this.addHoursForm.value);
+      }
+      this.dialogRef.close();
+    } catch (error) {
+      // tslint:disable-next-line:no-unused-expression
+      (error: { message: string }) => alert(error.message);
     }
-    this.dialogRef.close();
   }
   private hoursQuanityValidator(
     control: FormControl

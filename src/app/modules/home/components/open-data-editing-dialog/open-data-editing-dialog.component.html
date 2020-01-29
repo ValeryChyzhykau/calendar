@@ -1,6 +1,6 @@
 <button (click)="remove()" mat-stroked-button color="primary">Delete</button>
 <form novalidate [formGroup]="editHoursForm" (ngSubmit)='change()'>
-    <mat-form-field class="example-full-width">
+    <mat-form-field >
         <input type="number" matInput placeholder=" Введите количество часов" formControlName='title' name='number'>
     </mat-form-field>
     <button mat-stroked-button color="primary" [disabled]="editHoursForm.invalid" type='submit'>Еdit</button>

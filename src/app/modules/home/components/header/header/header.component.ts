@@ -20,11 +20,16 @@ export class HeaderComponent implements OnInit {
     private router: Router,
     private store$: Store<InformationNumber>
   ) {}
-  public  logout() {
-    this.service.logout();
-    this.router.navigate(['/login']);
+  public logout() {
+    try {
+      this.service.logout();
+      this.router.navigate(['/login']);
+    } catch (err) {
+      // tslint:disable-next-line:no-unused-expression
+      (err: {message: string}) => alert(err.message);
+    }
   }
-  public ngOnInit() {
+  ngOnInit() {
     this.store$.dispatch(new LoadUsers());
   }
 }
