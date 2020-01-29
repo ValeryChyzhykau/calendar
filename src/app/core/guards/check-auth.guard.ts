@@ -23,7 +23,7 @@ export class CheckAuthGuard implements CanActivate {
     | Promise<boolean | UrlTree>
     | boolean
     | UrlTree {
-    const status = this.service.check_status();
+    const status = this.service.checkStatus();
     return status.pipe(
       map(data => {
         if (data) {

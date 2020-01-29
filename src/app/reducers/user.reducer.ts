@@ -1,38 +1,45 @@
-import { informationNumber } from '@core/models/information-user.interface';
+import { InformationNumber } from '@core/models/information-user.interface';
 import { UserUnion, UsersActions } from './user.actions';
 
 export interface ResponseFireBase {
-  color: undefined;
-  email: undefined;
-  start: undefined;
-  title: undefined;
-  users?: informationNumber[];
+  users: InformationNumber[];
+  isLoading: boolean;
+  email: string;
 }
 
 export const calendarNode = 'calendar';
 export const initialState: ResponseFireBase = {
-  color: undefined,
+  users: [],
   email: undefined,
-  start: undefined,
-  title: undefined,
+  isLoading: false
 };
 
 export const calendarInformation = (
   state = initialState,
   action: UserUnion
-) => {
+): ResponseFireBase => {
   switch (action.type) {
-    case UsersActions.GetUsers:
+    case UsersActions.LoadUsersSuccess:
       return {
         ...state,
         users: action.payload
       };
-    case UsersActions.EmailUser:
+    case UsersActions.LoadUsers:
       return {
         ...state,
-        email: action.payload
+        isLoading: true
       };
-      default:
-         return state;
+      case UsersActions.EmailUser:
+        return {
+          ...state,
+          email: action.payload
+        };
+    case UsersActions.LoadUsersFailed:
+      return {
+        ...state,
+        isLoading: true
+      };
+    default:
+      return state;
   }
 };

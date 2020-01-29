@@ -18,7 +18,7 @@ export class AuthService {
   ) {
     this.user = afAuth.authState;
   }
-  public auth_user() {
+  public authUser() {
     return this.user;
   }
 
@@ -34,7 +34,7 @@ export class AuthService {
     this.afAuth.auth.signOut();
   }
 
-  public async sign_up(
+  public async signUp(
     email: string,
     password: string,
     userName: string,
@@ -48,13 +48,13 @@ export class AuthService {
       );
       this.authState = user;
       console.log(this.authState);
-      this.set_user_data(email, userName, login, phone);
+      this.setUserData(email, userName, login, phone);
     } catch (error) {
       return alert(error.message);
     }
   }
 
-  public check_status() {
+  public checkStatus() {
     return this.afAuth.authState.pipe(
       map(data => {
         if (data !== undefined && data !== null) {
@@ -65,7 +65,7 @@ export class AuthService {
       })
     );
   }
-  private set_user_data(
+  private setUserData(
     email: string,
     userName: string,
     login: string,

@@ -1,19 +1,20 @@
 <form novalidate [formGroup]="addHoursForm" (ngSubmit)='submit()'>
-    <mat-form-field class="example-full-width">
-        <input type="number" matInput placeholder=" Введите количество часов" formControlName='number' name='number'>
-        <div *ngIf="addHoursForm.controls['number'].invalid && addHoursForm.controls['number'].touched"
-            class='invalid-number'>
-            Введите числовой номер oт 0 до 24
-        </div>
-    </mat-form-field>
-    <mat-form-field class="example-full-width">
-        <input matInput [matDatepicker]="dp" placeholder="Выберете дату" name='date' formControlName='date'>
-        <mat-datepicker-toggle matSuffix [for]="dp"></mat-datepicker-toggle>
-        <mat-datepicker #dp></mat-datepicker>
-        <div *ngIf="addHoursForm.controls['date'].invalid && addHoursForm.controls['date'].touched"
-            class='invalid-number'>
-            Попробуйте выбрать дату еще раз...
-        </div>
-    </mat-form-field>
-    <button mat-stroked-button color="primary"  [disabled]="addHoursForm.invalid" type='submit'>Primary</button>
+        <input type="hidden" formControlName="$key">
+        <mat-form-field class="example-full-width">
+            <input type="number" matInput placeholder=" Введите количество часов" formControlName='title' name='number'>
+            <div *ngIf="addHoursForm.controls['title'].invalid && addHoursForm.controls['title'].touched"
+                class='invalid-number'>
+                Введите числовой номер oт 0 до 24
+            </div>
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+            <input matInput [matDatepicker]="dp" placeholder="Выберете дату" name='date' formControlName='start'>
+            <mat-datepicker-toggle matSuffix [for]="dp"></mat-datepicker-toggle>
+            <mat-datepicker #dp></mat-datepicker>
+            <div *ngIf="addHoursForm.controls['start'].invalid && addHoursForm.controls['start'].touched"
+                class='invalid-number'>
+                Попробуйте выбрать дату еще раз...
+            </div>
+        </mat-form-field>
+        <button mat-stroked-button color="primary" [disabled]="addHoursForm.invalid"  type='submit'>Add...</button>
 </form>

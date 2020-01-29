@@ -3,9 +3,9 @@ import { AuthService } from '@core/services/auth.service';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Store, select } from '@ngrx/store';
-import { selectEmail } from '@app/reducers/user.selectors';
-import { informationNumber } from '@core/models/information-user.interface';
+import { InformationNumber } from '@core/models/information-user.interface';
 import { LoadUsers } from '@app/reducers/user.actions';
+import { selectEmail } from '@src/app/reducers/user.selectors';
 
 @Component({
   selector: 'app-header',
@@ -18,7 +18,7 @@ export class HeaderComponent implements OnInit {
   constructor(
     private service: AuthService,
     private router: Router,
-    private store$: Store<informationNumber>
+    private store$: Store<InformationNumber>
   ) {}
   public  logout() {
     this.service.logout();

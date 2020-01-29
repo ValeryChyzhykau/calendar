@@ -5,14 +5,22 @@ import { ModalAddHoursComponent } from './components/modal-add-hours/modal-add-h
 import { FullCalendarModule } from '@fullcalendar/angular';
 import { SharedModule } from '@shared/shared.module';
 import { HomeComponent } from './home.component';
-import { HeaderComponent } from './components/modal-add-hours/header/header/header.component';
-import { FooterComponent } from './components/modal-add-hours/footer/footer/footer.component';
+import { HeaderComponent } from './components/header/header/header.component';
+import { FooterComponent } from './components/footer/footer.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { RouterModule } from '@angular/router';
+import { OpenDataEditingDialogComponent } from './components/open-data-editing-dialog/open-data-editing-dialog.component';
 
 @NgModule({
-  declarations: [HomeComponent, ModalAddHoursComponent, HeaderComponent, FooterComponent , NotFoundComponent],
+  declarations: [
+    HomeComponent,
+    ModalAddHoursComponent,
+    HeaderComponent,
+    FooterComponent,
+    NotFoundComponent,
+    OpenDataEditingDialogComponent
+  ],
   imports: [
     BrowserAnimationsModule,
     CommonModule,
@@ -21,6 +29,6 @@ import { RouterModule } from '@angular/router';
     SharedModule,
     RouterModule
   ],
-  entryComponents: [ModalAddHoursComponent],
+  entryComponents: [ModalAddHoursComponent, OpenDataEditingDialogComponent]
 })
-export class HomeModule { }
+export class HomeModule {}

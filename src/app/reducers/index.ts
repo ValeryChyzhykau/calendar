@@ -3,11 +3,10 @@ import {
   MetaReducer
 } from '@ngrx/store';
 import { environment } from '../../environments/environment';
-import { calendarInformation, calendarNode } from './user.reducer';
-import { informationNumber } from '@core/models/information-user.interface';
+import { calendarInformation, calendarNode, ResponseFireBase } from './user.reducer';
 
 export interface State {
-    [calendarNode]: informationNumber;
+    [calendarNode]: ResponseFireBase;
 }
 
 export const reducers: ActionReducerMap<State> = {

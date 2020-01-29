@@ -2,19 +2,21 @@ import { Injectable } from '@angular/core';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
 import * as firebase from 'firebase/app';
-import { informationNumber } from '../models/information-user.interface';
+import { InformationNumber } from '../models/information-user.interface';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
   public email: string;
-  public numberHours: AngularFireList<informationNumber>;
+  public numberHours: AngularFireList<InformationNumber>;
   private user: firebase.User;
   constructor(
     private afAuth: AngularFireAuth,
     private db: AngularFireDatabase
   ) {
+
     this.afAuth.authState.subscribe(auth => {
       if (auth !== undefined && auth !== null) {
         this.user = auth;
@@ -23,34 +25,48 @@ export class UserService {
     });
   }
 
-  public get_hours(): AngularFireList<informationNumber> {
-    return this.db.list(`users/${this.user.uid}/userInformationDate/`, ref =>
-      ref.orderByKey()
-    );
-  }
-  public send_hours(userHours: number, start: string) {
-    const email = this.email;
+  public getHours() {
+    this.numberHours = this.db.list(`users/${this.user.uid}/userInformationDate/`, ref => ref.orderByKey());
+    return this.numberHours.snapshotChanges();
+    }
+  public sendHours(customer)  {
     let color = '';
-    if (userHours > 8 || userHours === 8) {
+    if (customer.title > 8 || customer.title === 8) {
       color = 'red';
-    }
-    if (userHours < 8 || userHours === 4) {
-      color = 'green';
-    }
-    if (userHours === 0) {
-      color = 'grey';
-    }
-    this.numberHours = this.set_hours();
+     }
+    if (customer.title  < 8 || customer.title  === 4) {
+       color = 'green';
+     }
+    if ((customer.title  === 0)) {
+       color = 'grey';
+     }
     this.numberHours.push({
-      title: userHours,
-      email,
-      start,
+      title: customer.title,
+      email: this.email,
+      start: customer.start.format('YYYY-MM-DD'),
       color
     });
   }
-  private set_hours(): AngularFireList<informationNumber> {
-    return this.db.list(`users/${this.user.uid}/userInformationDate/`, ref =>
-      ref.orderByKey().limitToLast(31)
-    );
+  public editRecord(customer: { $key: string, title: number, color: string }) {
+    console.log(customer);
+    let color = '';
+    if (customer.title >= 8 ) {
+      color = 'red';
+     }
+    if (customer.title < 8 && customer.title !== 0) {
+       color = 'green';
+     }
+    if (customer.title === 0) {
+       color = 'grey';
+     }
+    this.numberHours.update(customer.$key, {
+      title: customer.title,
+      color
+    });
+
+  }
+
+  public removeHours($key: string) {
+    this.numberHours.remove($key);
   }
 }

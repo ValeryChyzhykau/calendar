@@ -19,9 +19,9 @@ export class SignUpComponent {
     userLogin: new FormControl('', Validators.required)
   });
 
-  public sign_up() {
+  public signUp() {
     const {userEmail, userName, userLogin, userPassword, userPhone} =  this.signUpForm.value;
-    this.service.sign_up(userEmail, userPassword, userName, userLogin, userPhone)
+    this.service.signUp(userEmail, userPassword, userName, userLogin, userPhone)
       .then(() => this.router.navigate(['/home']))
       .then(() => this.dialogRef.close())
       .catch(error => alert( error.message));
