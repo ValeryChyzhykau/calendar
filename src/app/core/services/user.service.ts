@@ -63,7 +63,6 @@ export class UserService {
       title: customer.title,
       color
     });
-
   }
 
   public removeHours($key: string) {

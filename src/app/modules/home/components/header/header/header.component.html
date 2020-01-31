@@ -1,7 +1,9 @@
-<div>
-    <img src='https://i.pinimg.com/originals/2b/2c/a1/2b2ca10e15e37338330573d7cb0835ba.png'>
+<div [class.red-topic]=headerTheme>
+    <img class="aquila" src='https://i.pinimg.com/originals/2b/2c/a1/2b2ca10e15e37338330573d7cb0835ba.png'>
+    <img class="logo-mechanikus"
+        src=' https://media.sketchfab.com/models/6ae2bbba02a14b09b4737a9a7078aa88/thumbnails/f1c92bf4099e46c78d8fc5c0c28c8a33/7d6c41df9cff4120bea403b86f204988.jpeg'>
     <span>
-        <p>{{email$ | async}}</p>
-        <p><button mat-flat-button  (click)='logout()'>logout</button></p>
+        <p class="user-email">{{email$ | async}}</p>
+        <p><button mat-flat-button (click)='logout()'>logout</button></p>
     </span>
 </div>

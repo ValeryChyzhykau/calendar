@@ -1,13 +1,14 @@
-<app-header></app-header>
-<br>
-<button mat-raised-button (click)="openDialog()">Добавить...</button>
-<full-calendar 
-   deepChangeDetection="true" 
-   [events]="calendarEvents" 
-   [plugins]='calendarPlugins'
-   deepChangeDetection="true"
-   (eventClick)="eventClick($event)"
-   >
-  </full-calendar>
-
-<app-footer></app-footer>
+<div class="container-calendar" [class.red-topic]="theme$ | async">
+  <app-header [headerTheme]="theme$ | async"></app-header>
+  <div class='btn-container'>
+    <button mat-raised-button (click)="openDialog()">Добавить...</button>
+    <button mat-raised-button (click)="changeTheme()">изменить</button>
+  </div>
+  <div class='calendar'>
+    <div class="background-calendar">
+      <full-calendar deepChangeDetection="true" [events]="calendar$ | async" [plugins]='calendarPlugins'
+        deepChangeDetection="true" (eventClick)="eventClick($event)" height="auto">
+      </full-calendar>
+    </div>
+  </div>
+</div>

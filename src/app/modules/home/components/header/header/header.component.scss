@@ -2,8 +2,14 @@ div {
   display: flex;
   background-color: black;
   justify-content: space-around;
+  transition: 3s;
 
-  img {
+  .logo-mechanikus {
+    display: none;
+    transition: 3s;
+  }
+
+  .aquila {
     width: 10%;
     height: auto;
     background-repeat: no-repeat;
@@ -17,6 +23,56 @@ div {
     p {
       color: white;
       font-size: 80%;
+      font-style: italic;
+      font-family: Apple Chancery, cursive;
+    }
+  }
+}
+
+.red-topic {
+  display: flex;
+  background-color: #8b0000;
+  flex-direction: row-reverse;
+  justify-content: space-around;
+  transition: 3s;
+
+  .logo-mechanikus {
+    display: block;
+    height: auto;
+    width: 54%;
+    transition: 3s;
+  }
+
+  .aquila {
+    transition: 3s;
+    display: none;
+  }
+
+  button {
+    height: 200%;
+    border-radius: 30%;
+    color: red;
+    background-color: black;
+    transition: 3s;
+    font-family: Courier, monospace;
+  }
+  button:hover {
+    width: 80px;
+  }
+
+  span {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+
+    .user-email {
+      border-bottom: 1px solid black;
+    }
+
+    p {
+      color: black;
+      font-size: 110%;
+      font-family: Courier, monospace;
     }
   }
 }

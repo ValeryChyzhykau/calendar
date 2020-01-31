@@ -31,8 +31,10 @@ export class OpenDataEditingDialogComponent {
       this.userService.editRecord(this.data);
       this.dialogRef.close();
     } catch (err) {
-      (      // tslint:disable-next-line:no-unused-expression
-      err: { message: string; }) => alert(err.message);
+      (
+        // tslint:disable-next-line:no-unused-expression
+        err: { message: string }
+      ) => alert(err.message);
     }
   }
   private hoursQuanityValidator(

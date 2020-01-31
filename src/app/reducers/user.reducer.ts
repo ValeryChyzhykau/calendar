@@ -1,5 +1,5 @@
 import { InformationNumber } from '@core/models/information-user.interface';
-import { UserUnion, UsersActions } from './user.actions';
+import { UserUnion, UsersActions } from './actions/user.actions';
 
 export interface ResponseFireBase {
   users: InformationNumber[];
@@ -29,11 +29,11 @@ export const calendarInformation = (
         ...state,
         isLoading: true
       };
-      case UsersActions.EmailUser:
-        return {
-          ...state,
-          email: action.payload
-        };
+    case UsersActions.EmailUser:
+      return {
+        ...state,
+        email: action.payload
+      };
     case UsersActions.LoadUsersFailed:
       return {
         ...state,

@@ -6,7 +6,6 @@ import { FullCalendarModule } from '@fullcalendar/angular';
 import { SharedModule } from '@shared/shared.module';
 import { HomeComponent } from './home.component';
 import { HeaderComponent } from './components/header/header/header.component';
-import { FooterComponent } from './components/footer/footer.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { RouterModule } from '@angular/router';
@@ -17,7 +16,6 @@ import { OpenDataEditingDialogComponent } from './components/open-data-editing-d
     HomeComponent,
     ModalAddHoursComponent,
     HeaderComponent,
-    FooterComponent,
     NotFoundComponent,
     OpenDataEditingDialogComponent
   ],

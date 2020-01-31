@@ -4,7 +4,7 @@ import { UserService } from '../core/services/user.service';
 import {
   UsersActions,
   LoadUsersSuccess
-} from '../reducers/user.actions';
+} from '../reducers/actions/user.actions';
 import { switchMap } from 'rxjs/operators';
 import { map } from 'rxjs/operators';
 
@@ -22,13 +22,11 @@ export class UsersEffects {
         .getHours()
         .pipe(
           map(data => {
-            console.log(data);
             const result = data.map(a => {
               const key = a.payload.key;
               const userData = a.payload.val();
               return { key, ...userData };
             });
-            console.log(result);
             return new LoadUsersSuccess(result);
           })
         )
