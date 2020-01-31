@@ -33,10 +33,11 @@ div {
   display: flex;
   background-color: #8b0000;
   flex-direction: row-reverse;
-  justify-content: space-around;
+  justify-content: space-between;
   transition: 3s;
 
   .logo-mechanikus {
+    flex:1;
     display: block;
     height: auto;
     width: 54%;
@@ -61,8 +62,10 @@ div {
   }
 
   span {
+    flex:2;
     display: flex;
     justify-content: center;
+    align-items: center;
     flex-direction: column;
 
     .user-email {

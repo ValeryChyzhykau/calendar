@@ -18,7 +18,8 @@ export const stateTheme = (
 ): StateTheme => {
   switch (action.type) {
     case UsersThemeActions.LoadValueSuccess:
-      localStorage.setItem('theme', JSON.stringify(state.theme));
+      console.log(state);
+      localStorage.setItem('theme', JSON.stringify(!state.theme));
       return {
         ...state,
         theme: !state.theme
