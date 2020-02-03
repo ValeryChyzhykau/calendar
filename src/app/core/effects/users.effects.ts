@@ -3,11 +3,11 @@ import { Actions, Effect, ofType } from '@ngrx/effects';
 import { Observable } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 import { map } from 'rxjs/operators';
-import { UserService } from '../core/services/user.service';
 import {
   LoadUsersSuccess,
   UsersActions
-} from '../reducers/actions/user.actions';
+} from '../actions/user.actions';
+import { UserService } from '../services/user.service';
 
 
 @Injectable()

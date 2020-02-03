@@ -1,10 +1,10 @@
-import { InformationNumber } from '@core/models/information-user.interface';
+import { InformationNumber } from '@core/interfaces/information-user.interface';
 import { Action } from '@ngrx/store';
 
 export enum UsersActions {
-  LoadUsersSuccess = '[Users Page] LoadUsersSuccess',
-  EmailUser = '[Users Email] EmailUser',
-  LoadUsers = '[Load Users] LoadUsers',
+  LoadUsersSuccess = '[Users] LoadUsersSuccess',
+  EmailUser = '[Users] EmailUser',
+  LoadUsers = '[Users] LoadUsers',
   LoadUsersFailed = '[Users] LoadUsersFailed'
 }
 

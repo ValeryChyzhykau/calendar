@@ -31,7 +31,7 @@ export class LoginComponent {
       alert(err);
     }
   }
-  public open_dialog(): void {
+  public openDialog(): void {
     this.dialog.open(SignUpComponent, {
       width: '350px',
       height: '500px'

@@ -1,15 +1,15 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { InformationNumber } from '@core/models/information-user.interface';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import interactionPlugin from '@fullcalendar/interaction';
 import { select, Store } from '@ngrx/store';
-import { LoadValueSuccess } from '@src/app/reducers/actions/theme.actions';
-import { LoadUsers } from '@src/app/reducers/actions/user.actions';
-import { selectThemeValue } from '@src/app/reducers/selectors/theme.selectors';
-import { selectCalendarEvents } from '@src/app/reducers/selectors/user.selectors';
-import { StateTheme } from '@src/app/reducers/theme.reducer';
-import { ResponseFireBase } from '@src/app/reducers/user.reducer';
+import { LoadThemeSuccess } from '@src/app/core/actions/theme.actions';
+import { LoadUsers } from '@src/app/core/actions/user.actions';
+import { InformationNumber } from '@src/app/core/interfaces/information-user.interface';
+import { StateTheme } from '@src/app/core/reducers/theme.reducer';
+import { ResponseFireBase } from '@src/app/core/reducers/user.reducer';
+import { selectThemeValue } from '@src/app/core/selectors/theme.selectors';
+import { selectCalendarEvents } from '@src/app/core/selectors/user.selectors';
 import { Observable } from 'rxjs';
 import { ModalAddHoursComponent } from './components/modal-add-hours/modal-add-hours.component';
 import { OpenDataEditingDialogComponent } from './components/open-data-editing-dialog/open-data-editing-dialog.component';
@@ -38,7 +38,7 @@ export class HomeComponent {
   }
 
   public changeTheme(): void {
-    this.themeStore$.dispatch(new LoadValueSuccess());
+    this.themeStore$.dispatch(new LoadThemeSuccess());
   }
   public openDialog(): void {
     this.dialog.open(ModalAddHoursComponent, {

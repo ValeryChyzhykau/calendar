@@ -1,5 +1,5 @@
 import { ActionReducerMap, MetaReducer } from '@ngrx/store';
-import { environment } from '../../environments/environment';
+import { environment } from '../../../environments/environment';
 import { stateTheme, StateTheme, themeNode } from './theme.reducer';
 import {
   calendarInformation,

@@ -3,7 +3,7 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFireDatabase, AngularFireList, SnapshotAction } from 'angularfire2/database';
 import * as firebase from 'firebase/app';
 import { Observable } from 'rxjs';
-import { InformationNumber } from '../models/information-user.interface';
+import { InformationNumber } from '../interfaces/information-user.interface';
 
 
 @Injectable({

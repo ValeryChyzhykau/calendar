@@ -3,10 +3,10 @@ import { Actions, Effect, ofType } from '@ngrx/effects';
 import { Observable } from 'rxjs';
 import { mergeMap } from 'rxjs/operators';
 import { map } from 'rxjs/operators';
-import { AuthService } from '../core/services/auth.service';
 import {
   EmailUser, UsersActions
-} from '../reducers/actions/user.actions';
+} from '../actions/user.actions';
+import { AuthService } from '../services/auth.service';
 
 @Injectable()
 export class EmailEffects {

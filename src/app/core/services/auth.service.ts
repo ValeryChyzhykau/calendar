@@ -4,7 +4,7 @@ import { AngularFireDatabase } from 'angularfire2/database';
 import * as firebase from 'firebase/app';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { User } from '../models/user.interface';
+import { User } from '../interfaces/user.interface';
 
 @Injectable()
 export class AuthService {
@@ -68,7 +68,7 @@ export class AuthService {
     login: string,
     phone: number
   ): void {
-    const path = `users/${this.current_user_id}`;
+    const path = `users/${this.currentUserId}`;
     const data = {
       email,
       userName,
@@ -80,7 +80,7 @@ export class AuthService {
       .update(data)
       .catch(error => alert(error));
   }
-  private get current_user_id(): string {
+  private get currentUserId(): string {
     return this.authState !== null ? this.authState.user.uid : '';
   }
 }

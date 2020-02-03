@@ -6,10 +6,10 @@ import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { effects } from './effects';
-import { AuthModule } from './modules/auth/auth.module';
-import { HomeModule } from './modules/home/home.module';
-import { metaReducers, reducers } from './reducers';
+import { effects } from './core/effects';
+import { metaReducers, reducers } from './core/reducers';
+import { AuthModule } from './modules/auth.module';
+import { HomeModule } from './modules/home.module';
 
 
 

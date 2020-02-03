@@ -3,9 +3,9 @@ import { Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '@core/services/auth.service';
 import { select, Store } from '@ngrx/store';
-import { LoadUsers } from '@src/app/reducers/actions/user.actions';
-import { selectEmail } from '@src/app/reducers/selectors/user.selectors';
-import { ResponseFireBase } from '@src/app/reducers/user.reducer';
+import { LoadUsers } from '@src/app/core/actions/user.actions';
+import { ResponseFireBase } from '@src/app/core/reducers/user.reducer';
+import { selectEmail } from '@src/app/core/selectors/user.selectors';
 import { Observable } from 'rxjs';
 
 @Component({
