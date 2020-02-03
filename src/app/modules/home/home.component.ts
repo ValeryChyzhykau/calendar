@@ -1,18 +1,18 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { InformationNumber } from '@core/models/information-user.interface';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import interactionPlugin from '@fullcalendar/interaction';
-import { InformationNumber } from '@core/models/information-user.interface';
-import { Store, select } from '@ngrx/store';
-import { Observable } from 'rxjs';
-import { selectCalendarEvents } from '@src/app/reducers/selectors/user.selectors';
+import { select, Store } from '@ngrx/store';
+import { LoadValueSuccess } from '@src/app/reducers/actions/theme.actions';
 import { LoadUsers } from '@src/app/reducers/actions/user.actions';
+import { selectThemeValue } from '@src/app/reducers/selectors/theme.selectors';
+import { selectCalendarEvents } from '@src/app/reducers/selectors/user.selectors';
+import { StateTheme } from '@src/app/reducers/theme.reducer';
+import { ResponseFireBase } from '@src/app/reducers/user.reducer';
+import { Observable } from 'rxjs';
 import { ModalAddHoursComponent } from './components/modal-add-hours/modal-add-hours.component';
 import { OpenDataEditingDialogComponent } from './components/open-data-editing-dialog/open-data-editing-dialog.component';
-import { ResponseFireBase } from '@src/app/reducers/user.reducer';
-import { StateTheme } from '@src/app/reducers/theme.reducer';
-import { selectThemeValue } from '@src/app/reducers/selectors/theme.selectors';
-import { LoadValueSuccess } from '@src/app/reducers/actions/theme.actions';
 
 @Component({
   selector: 'app-home',
@@ -20,14 +20,14 @@ import { LoadValueSuccess } from '@src/app/reducers/actions/theme.actions';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent {
   public calendar$: Observable<InformationNumber[]> = this.store$.pipe(
     select(selectCalendarEvents)
   );
   public theme$: Observable<boolean> = this.themeStore$.pipe(
     select(selectThemeValue)
   );
-  public calendarPlugins = [dayGridPlugin, interactionPlugin];
+  public calendarPlugins: object = [dayGridPlugin, interactionPlugin];
   private editDay: InformationNumber;
   constructor(
     private themeStore$: Store<StateTheme>,
@@ -37,7 +37,7 @@ export class HomeComponent implements OnInit {
     this.store$.dispatch(new LoadUsers());
   }
 
-  public changeTheme() {
+  public changeTheme(): void {
     this.themeStore$.dispatch(new LoadValueSuccess());
   }
   public openDialog(): void {
@@ -45,12 +45,6 @@ export class HomeComponent implements OnInit {
       width: '75%',
       height: '50%'
     });
-  }
-  ngOnInit() {
-    this.calendar$.subscribe((res: InformationNumber[]) => {
-      console.log(res);
-    });
-    this.theme$.subscribe(res => console.log(res));
   }
 
   public eventClick(info: {
@@ -60,7 +54,7 @@ export class HomeComponent implements OnInit {
       start: string;
       backgroundColor: string;
     };
-  }) {
+  }): void {
     const data: InformationNumber = {
       title: info.event.title,
       start: info.event.start,
@@ -71,7 +65,7 @@ export class HomeComponent implements OnInit {
     this.editDay = data;
     return this.OpenDataEditingDialog();
   }
-  private OpenDataEditingDialog() {
+  private OpenDataEditingDialog(): void {
     this.dialog.open(OpenDataEditingDialogComponent, {
       width: '75%',
       height: '50%',
@@ -79,5 +73,3 @@ export class HomeComponent implements OnInit {
     });
   }
 }
-
-

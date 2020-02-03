@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { AuthService } from '@core/services/auth.service';
 import { Router } from '@angular/router';
+import { AuthService } from '@core/services/auth.service';
 
 @Component({
   selector: 'app-modal',
@@ -18,13 +18,13 @@ export class SignUpComponent {
     userPassword:  new FormControl('', [Validators.required, Validators.minLength(6)]),
     userLogin: new FormControl('', Validators.required)
   });
+  constructor(public dialogRef: MatDialogRef<SignUpComponent>, private service: AuthService, private router: Router) {}
 
-  public signUp() {
+  public signUp(): void {
     const {userEmail, userName, userLogin, userPassword, userPhone} =  this.signUpForm.value;
     this.service.signUp(userEmail, userPassword, userName, userLogin, userPhone)
       .then(() => this.router.navigate(['/home']))
       .then(() => this.dialogRef.close())
       .catch(error => alert( error.message));
   }
-  constructor(public dialogRef: MatDialogRef<SignUpComponent>, private service: AuthService, private router: Router) {}
 }

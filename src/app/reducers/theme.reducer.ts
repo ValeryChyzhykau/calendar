@@ -1,4 +1,4 @@
-import { UserUnion, UsersThemeActions } from './actions/theme.actions';
+import { UsersThemeActions, UserUnion } from './actions/theme.actions';
 
 export interface StateTheme {
   theme: boolean;
@@ -8,7 +8,7 @@ export interface StateTheme {
 export const themeNode = 'stateTheme';
 
 export const initialState: StateTheme = {
-  theme: localStorage.getItem('theme') === 'false',
+  theme: localStorage.getItem('theme') === 'true',
   isLoading: false
 };
 
@@ -18,7 +18,6 @@ export const stateTheme = (
 ): StateTheme => {
   switch (action.type) {
     case UsersThemeActions.LoadValueSuccess:
-      console.log(state);
       localStorage.setItem('theme', JSON.stringify(!state.theme));
       return {
         ...state,

@@ -1,12 +1,12 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
-import { AuthService } from '@core/services/auth.service';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { Input } from '@angular/core';
 import { Router } from '@angular/router';
-import { Observable } from 'rxjs';
-import { Store, select } from '@ngrx/store';
+import { AuthService } from '@core/services/auth.service';
+import { select, Store } from '@ngrx/store';
 import { LoadUsers } from '@src/app/reducers/actions/user.actions';
 import { selectEmail } from '@src/app/reducers/selectors/user.selectors';
-import { Input} from '@angular/core';
 import { ResponseFireBase } from '@src/app/reducers/user.reducer';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-header',
@@ -15,7 +15,7 @@ import { ResponseFireBase } from '@src/app/reducers/user.reducer';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class HeaderComponent implements OnInit {
-  @Input() headerTheme: boolean;
+  @Input() public headerTheme: boolean;
   public email$: Observable<string> = this.store$.pipe(select(selectEmail));
 
   constructor(
@@ -23,16 +23,15 @@ export class HeaderComponent implements OnInit {
     private router: Router,
     private store$: Store<ResponseFireBase>
   ) {}
-  public logout() {
+  public logout(): void {
     try {
       this.service.logout();
       this.router.navigate(['/login']);
-    } catch (err) {
-      // tslint:disable-next-line:no-unused-expression
-      (err: { message: string }) => alert(err.message);
+    }  catch (err) {
+      alert(err);
     }
   }
-  ngOnInit() {
+  public ngOnInit(): void {
     this.store$.dispatch(new LoadUsers());
   }
 }
