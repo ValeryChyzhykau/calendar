@@ -6,8 +6,6 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { User } from '../models/user.interface';
 
-
-
 @Injectable()
 export class AuthService {
   private user: Observable<firebase.User>;
@@ -18,11 +16,11 @@ export class AuthService {
   ) {
     this.user = afAuth.authState;
   }
-  public authUser() {
+  public authUser(): Observable<firebase.User> {
     return this.user;
   }
 
-  public async login(email: string, password: string) {
+  public async login(email: string, password: string): Promise<void> {
     const user = await this.afAuth.auth.signInWithEmailAndPassword(
       email,
       password
@@ -30,7 +28,7 @@ export class AuthService {
     this.authState = user;
   }
 
-  public logout() {
+  public logout(): void {
     this.afAuth.auth.signOut();
   }
 
@@ -40,21 +38,20 @@ export class AuthService {
     userName: string,
     login: string,
     phone: number
-  ) {
+  ): Promise<void> {
     try {
       const user = await this.afAuth.auth.createUserWithEmailAndPassword(
         email,
         password
       );
       this.authState = user;
-      console.log(this.authState);
       this.setUserData(email, userName, login, phone);
     } catch (error) {
       return alert(error.message);
     }
   }
 
-  public checkStatus() {
+  public checkStatus(): Observable<boolean> {
     return this.afAuth.authState.pipe(
       map(data => {
         if (data !== undefined && data !== null) {
@@ -78,16 +75,12 @@ export class AuthService {
       login,
       phone
     };
-    console.log(data);
-    console.log(path);
     this.db
       .object(path)
       .update(data)
-      .catch(error => console.log(error));
-    console.log(this.db);
+      .catch(error => alert(error));
   }
   private get current_user_id(): string {
-    console.log(this.authState);
     return this.authState !== null ? this.authState.user.uid : '';
   }
 }

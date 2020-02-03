@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from 'angularfire2/auth';
-import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
+import { AngularFireDatabase, AngularFireList, SnapshotAction } from 'angularfire2/database';
 import * as firebase from 'firebase/app';
+import { Observable } from 'rxjs';
 import { InformationNumber } from '../models/information-user.interface';
 
 
@@ -25,11 +26,11 @@ export class UserService {
     });
   }
 
-  public getHours() {
+  public getHours(): Observable<Array<SnapshotAction<InformationNumber>>> {
     this.numberHours = this.db.list(`users/${this.user.uid}/userInformationDate/`, ref => ref.orderByKey());
     return this.numberHours.snapshotChanges();
     }
-  public sendHours(customer)  {
+  public sendHours(customer: { title: number; start: { format: (arg0: string) => string; }; }): void  {
     let color = '';
     if (customer.title > 8 || customer.title === 8) {
       color = 'red';
@@ -47,8 +48,7 @@ export class UserService {
       color
     });
   }
-  public editRecord(customer: { $key: string, title: number, color: string }) {
-    console.log(customer);
+  public editRecord(customer: { $key: string, title: number, color: string }): void {
     let color = '';
     if (customer.title >= 8 ) {
       color = 'red';
@@ -65,7 +65,7 @@ export class UserService {
     });
   }
 
-  public removeHours($key: string) {
+  public removeHours($key: string): void {
     this.numberHours.remove($key);
   }
 }
