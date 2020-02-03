@@ -28,7 +28,6 @@ To be configured
 
 Environment 
 
-
 ## Versioning
 
 New version of the app should be released when the whole scope of features are done and tested.
