@@ -7,13 +7,13 @@ export enum UsersThemeActions {
 }
 
 export class LoadValueSuccess implements Action {
-  readonly type = UsersThemeActions.LoadValueSuccess;
+  public readonly type:  UsersThemeActions.LoadValueSuccess = UsersThemeActions.LoadValueSuccess;
 }
 export class LoadFailedSuccess implements Action {
-  readonly type = UsersThemeActions.LoadValueFailed;
+  public readonly type: UsersThemeActions.LoadValueFailed = UsersThemeActions.LoadValueFailed;
 }
 export class LoadValue implements Action {
-  readonly type = UsersThemeActions.LoadValue;
+  public readonly type: UsersThemeActions.LoadValue = UsersThemeActions.LoadValue;
 }
 
 export type UserUnion = LoadValueSuccess | LoadFailedSuccess | LoadValue;

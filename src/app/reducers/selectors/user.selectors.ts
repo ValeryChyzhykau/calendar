@@ -1,6 +1,6 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
-import { calendarNode, ResponseFireBase } from '../user.reducer';
 import { InformationNumber } from '../../core/models/information-user.interface';
+import { calendarNode, ResponseFireBase } from '../user.reducer';
 
 export const selectCalendarFeature = createFeatureSelector<ResponseFireBase>(
   calendarNode

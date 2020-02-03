@@ -1,5 +1,5 @@
 import { InformationNumber } from '@core/models/information-user.interface';
-import { UserUnion, UsersActions } from './actions/user.actions';
+import { UsersActions, UserUnion } from './actions/user.actions';
 
 export interface ResponseFireBase {
   users: InformationNumber[];

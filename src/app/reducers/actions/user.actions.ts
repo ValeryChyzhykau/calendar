@@ -1,5 +1,5 @@
-import { Action } from '@ngrx/store';
 import { InformationNumber } from '@core/models/information-user.interface';
+import { Action } from '@ngrx/store';
 
 export enum UsersActions {
   LoadUsersSuccess = '[Users Page] LoadUsersSuccess',
@@ -9,20 +9,20 @@ export enum UsersActions {
 }
 
 export class LoadUsersSuccess implements Action {
-  readonly type = UsersActions.LoadUsersSuccess;
+  public readonly type: UsersActions.LoadUsersSuccess = UsersActions.LoadUsersSuccess;
   constructor(public payload: InformationNumber[]) {}
 }
 
 export class EmailUser implements Action {
-  readonly type = UsersActions.EmailUser;
+  public readonly type: UsersActions.EmailUser = UsersActions.EmailUser;
 
   constructor(public payload: string) {}
 }
 export class LoadUsersFailed implements Action {
-  readonly type = UsersActions.LoadUsersFailed;
+  public readonly type: UsersActions.LoadUsersFailed = UsersActions.LoadUsersFailed;
 }
 export class LoadUsers implements Action {
-  readonly type = UsersActions.LoadUsers;
+  public readonly type: UsersActions.LoadUsers = UsersActions.LoadUsers;
 }
 
 export type UserUnion =

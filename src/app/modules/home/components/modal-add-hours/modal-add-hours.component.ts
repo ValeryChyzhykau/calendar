@@ -1,13 +1,13 @@
 import { Component } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { MatDialogRef } from '@angular/material/dialog';
-import { UserService } from '@core/services/user.service';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import {
+  MAT_MOMENT_DATE_ADAPTER_OPTIONS,
   MAT_MOMENT_DATE_FORMATS,
   MomentDateAdapter,
-  MAT_MOMENT_DATE_ADAPTER_OPTIONS,
 } from '@angular/material-moment-adapter';
 import {DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
+import { MatDialogRef } from '@angular/material/dialog';
+import { UserService } from '@core/services/user.service';
 
 @Component({
   selector: 'app-modal-add-hours',
@@ -23,10 +23,6 @@ import {DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material
   ]
 })
 export class ModalAddHoursComponent {
-  constructor(
-    private dialogRef: MatDialogRef<ModalAddHoursComponent>,
-    private user: UserService
-  ) {}
   public addHoursForm: FormGroup = new FormGroup({
     title: new FormControl('', [
       Validators.required,
@@ -34,15 +30,18 @@ export class ModalAddHoursComponent {
     ]),
     start: new FormControl('', Validators.required)
   });
-  public submit() {
+  constructor(
+    private dialogRef: MatDialogRef<ModalAddHoursComponent>,
+    private user: UserService
+  ) {}
+  public submit(): void {
     try {
       if (this.addHoursForm.valid) {
         this.user.sendHours(this.addHoursForm.value);
       }
       this.dialogRef.close();
-    } catch (error) {
-      // tslint:disable-next-line:no-unused-expression
-      (error: { message: string }) => alert(error.message);
+    } catch (err) {
+      alert(err);
     }
   }
   private hoursQuanityValidator(

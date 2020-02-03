@@ -1,11 +1,11 @@
 import { ActionReducerMap, MetaReducer } from '@ngrx/store';
 import { environment } from '../../environments/environment';
+import { stateTheme, StateTheme, themeNode } from './theme.reducer';
 import {
   calendarInformation,
   calendarNode,
   ResponseFireBase
 } from './user.reducer';
-import { themeNode, stateTheme, StateTheme } from './theme.reducer';
 
 export interface State {
   [calendarNode]: ResponseFireBase;
@@ -17,6 +17,6 @@ export const reducers: ActionReducerMap<State> = {
   [themeNode]: stateTheme
 };
 
-export const metaReducers: MetaReducer<State>[] = !environment.production
+export const metaReducers: Array<MetaReducer<State>> = !environment.production
   ? []
   : [];
